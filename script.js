@@ -1,10 +1,6 @@
-
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  alert('Thanks for reaching out!');
-});
-
-// Get the button
+// =====================
+// Scroll-to-top button
+// =====================
 const scrollTopBtn = document.getElementById("scrollTopBtn");
 
 // Show button when user scrolls down
@@ -24,4 +20,31 @@ scrollTopBtn.addEventListener("click", () => {
   });
 });
 
+// =====================
+// Contact form submission using Formspree
+// =====================
+const form = document.getElementById("contactForm");
 
+form.addEventListener("submit", async (e) => {
+  e.preventDefault(); // Prevent default form submission
+
+  const formData = new FormData(form); // Collect form data
+
+  try {
+    const response = await fetch("https://formspree.io/f/xwpnyvlz", {
+      method: "POST",
+      body: formData,
+      headers: { "Accept": "application/json" }
+    });
+
+    if (response.ok) {
+      alert("Thanks for reaching out! Your message has been sent.");
+      form.reset(); // Clear the form
+    } else {
+      alert("Oops! There was a problem submitting your form.");
+    }
+  } catch (error) {
+    console.error("Error submitting the form:", error);
+    alert("Oops! There was a network error. Please try again later.");
+  }
+});
