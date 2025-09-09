@@ -19,8 +19,8 @@ body {
 }
 
 .profile-img {
-  width: 120px;
-  height: 120px;
+  width: 500px;
+  height: 400px;
   object-fit: cover;
   border-radius: 50%;
   border: 4px solid #eebbc3;
@@ -92,8 +92,8 @@ body {
   margin-top: 1rem;
 }
 .gallery img {
-  width: 120px;
-  height: 120px;
+  width: 3000px;
+  height: 300px;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(35,41,70,0.10);
@@ -197,8 +197,8 @@ section {
 .project {
   background: #eebbc3;
   color: #232946;
-  padding: 1.2rem;
-  margin: 1.2rem 0;
+  padding: 1rem;
+  margin: 1rem 0;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(35,41,70,0.08);
   transition: transform 0.15s;
