@@ -48,3 +48,13 @@ form.addEventListener("submit", async (e) => {
     alert("Oops! There was a network error. Please try again later.");
   }
 });
+
+
+// Scroll to contact form when "Hire Me" is clicked
+const hireBtn = document.getElementById("hireBtn");
+
+hireBtn.addEventListener("click", () => {
+  document.getElementById("contact").scrollIntoView({
+    behavior: "smooth"
+  });
+});
