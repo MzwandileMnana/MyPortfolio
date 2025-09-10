@@ -50,7 +50,19 @@ form.addEventListener("submit", async (e) => {
 });
 
 
-// Scroll to contact form when "Hire Me" is clicked
+// Scroll to contact form when any "Hire Me" button is clicked
+const hireButtons = document.querySelectorAll(".hireBtn");
+
+hireButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    document.getElementById("contact").scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+});
+
+
+/* Scroll to contact form when "Hire Me" is clicked
 const hireBtn = document.getElementById("hireBtn");
 
 hireBtn.addEventListener("click", () => {
@@ -58,3 +70,12 @@ hireBtn.addEventListener("click", () => {
     behavior: "smooth"
   });
 });
+
+// Scroll to contact form when "Hire Me" is clicked
+const hireBt = document.getElementById("hireBt");
+
+hireBtn.addEventListener("click", () => {
+  document.getElementById("contact").scrollIntoView({
+    behavior: "smooth"
+  });
+}); */
