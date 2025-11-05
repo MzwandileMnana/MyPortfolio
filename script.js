@@ -56,5 +56,59 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Burger nav toggle for small screens
+  const burger = document.querySelector('.burger');
+  const nav = document.querySelector('nav');
+  const navLinks = document.querySelector('.nav-links');
+  if (burger && navLinks && nav) {
+    burger.addEventListener('click', () => {
+      const expanded = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('nav-open');
+      // toggle body scroll lock when menu is open
+      document.body.classList.toggle('no-scroll');
+      // update burger icon to show close when open
+      if (nav.classList.contains('nav-open')) {
+        burger.textContent = '✕';
+      } else {
+        burger.textContent = '☰';
+      }
+    });
+
+    // close menu when a nav link is clicked (mobile)
+    navLinks.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => {
+        if (nav.classList.contains('nav-open')) {
+          nav.classList.remove('nav-open');
+          burger.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('no-scroll');
+          burger.textContent = '☰';
+        }
+      });
+    });
+
+    // close menu when clicking outside the nav-links (backdrop)
+    document.addEventListener('click', (e) => {
+      if (!nav.classList.contains('nav-open')) return;
+      const target = e.target;
+      if (!target.closest('.nav-links') && !target.closest('.burger')) {
+        nav.classList.remove('nav-open');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('no-scroll');
+        burger.textContent = '☰';
+      }
+    });
+
+    // close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('nav-open')) {
+        nav.classList.remove('nav-open');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('no-scroll');
+        burger.textContent = '☰';
+      }
+    });
+  }
 });
 
