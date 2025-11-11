@@ -57,6 +57,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Smooth scroll for all navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href === '#' || href === '') return;
+      
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
   // Burger nav toggle for small screens
   const burger = document.querySelector('.burger');
   const nav = document.querySelector('nav');
