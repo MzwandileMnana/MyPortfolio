@@ -1,76 +1,212 @@
-/* Animations and reveal helpers (separate file) */
+/* Modern Animations */
 
-/* Keyframes */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes fadeRight {
-  from { opacity: 0; transform: translateX(-18px); }
-  to   { opacity: 1; transform: translateX(0); }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes float {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-8px); }
-  100% { transform: translateY(0); }
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
-@keyframes pulseGlow {
-  0% { box-shadow: 0 6px 18px rgba(78, 67, 112, 0.06); }
-  50% { box-shadow: 0 12px 36px rgba(78, 67, 112, 0.10); }
-  100% { box-shadow: 0 6px 18px rgba(78, 67, 112, 0.06); }
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-/* Reveal helper: initial hidden state */
+/* Reveal Animation */
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  will-change: transform, opacity;
-  transition: opacity 0.6s cubic-bezier(.22,.9,.32,1), transform 0.6s cubic-bezier(.22,.9,.32,1);
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.22, 0.9, 0.32, 1),
+              transform 0.8s cubic-bezier(0.22, 0.9, 0.32, 1);
 }
 
-/* When element is in view */
 .reveal.in-view {
   opacity: 1;
-  transform: none;
+  transform: translateY(0);
 }
 
-/* Modifier helpers */
-.reveal--right { transform: translateX(-22px); }
-.reveal--fast { transition-duration: 0.45s; }
-.reveal--slow { transition-duration: 0.9s; }
-
-/* Floating profile image */
-.profile-img.float {
-  animation: float 6s ease-in-out infinite;
+.reveal--fast {
+  transition-duration: 0.5s;
 }
 
-/* Subtle pulse on CTA buttons */
-.btn.pulse {
-  animation: pulseGlow 3.5s ease-in-out infinite;
+.reveal--slow {
+  transition-duration: 1.2s;
 }
 
-/* Small entrance animations for nav */
-nav.reveal.in-view a {
-  animation: fadeRight 0.6s ease both;
+/* Hero Animations */
+.hero-greeting {
+  animation: fadeIn 0.8s ease-out;
 }
 
-/* Make gallery images animate nicely */
-.gallery img.reveal.in-view {
-  transform: translateY(0) scale(1);
-  opacity: 1;
+.hero-name {
+  animation: slideInLeft 0.8s ease-out 0.2s both;
 }
 
-/* Accessibility-friendly reduced motion */
+.hero-title {
+  animation: slideInLeft 0.8s ease-out 0.4s both;
+}
+
+.hero-buttons {
+  animation: fadeUp 0.8s ease-out 0.6s both;
+}
+
+.tech-stack {
+  animation: fadeUp 0.8s ease-out 0.8s both;
+}
+
+.tech-stack span {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.tech-stack span:nth-child(1) { animation-delay: 1s; }
+.tech-stack span:nth-child(2) { animation-delay: 1.1s; }
+.tech-stack span:nth-child(3) { animation-delay: 1.2s; }
+.tech-stack span:nth-child(4) { animation-delay: 1.3s; }
+.tech-stack span:nth-child(5) { animation-delay: 1.4s; }
+.tech-stack span:nth-child(6) { animation-delay: 1.5s; }
+.tech-stack span:nth-child(7) { animation-delay: 1.6s; }
+
+.profile-circle {
+  animation: scaleIn 1s ease-out 0.3s both, float 6s ease-in-out 1.5s infinite;
+}
+
+/* Service Items Animation */
+.service-item {
+  opacity: 0;
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.service-item:nth-child(1) { animation-delay: 0.2s; }
+.service-item:nth-child(2) { animation-delay: 0.4s; }
+.service-item:nth-child(3) { animation-delay: 0.6s; }
+
+/* Stats Animation */
+.stat-item {
+  opacity: 0;
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+.stat-item:nth-child(1) { animation-delay: 0.3s; }
+.stat-item:nth-child(2) { animation-delay: 0.5s; }
+.stat-item:nth-child(3) { animation-delay: 0.7s; }
+
+/* Project Cards Stagger */
+.project-card {
+  opacity: 0;
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+.project-card:nth-child(5) { animation-delay: 0.5s; }
+.project-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Skill Tags Animation */
+.skill-tag {
+  opacity: 0;
+  animation: scaleIn 0.4s ease-out forwards;
+}
+
+.skill-tags .skill-tag:nth-child(1) { animation-delay: 0.1s; }
+.skill-tags .skill-tag:nth-child(2) { animation-delay: 0.15s; }
+.skill-tags .skill-tag:nth-child(3) { animation-delay: 0.2s; }
+.skill-tags .skill-tag:nth-child(4) { animation-delay: 0.25s; }
+.skill-tags .skill-tag:nth-child(5) { animation-delay: 0.3s; }
+.skill-tags .skill-tag:nth-child(6) { animation-delay: 0.35s; }
+
+/* Button Hover Effects */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
-  .profile-img.float,
-  .btn.pulse,
-  .reveal {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .profile-circle {
     animation: none !important;
-    transition: none !important;
-    transform: none !important;
-    opacity: 1 !important;
+  }
+  
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
